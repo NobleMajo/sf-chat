@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat |CoreUnit.NET</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <audio style="display: none;" preload volume="0.9" id="fuerfortnite" src="sounds/fuerfortnite.mp3"></audio>
+    <audio style="display: none;" volume="0.5" id="billigerhose" src="sounds/billigerhose.mp3"></audio>
+    <audio style="display: none;" volume="0.01" id="pornhub" src="sounds/pornhub.mp3"></audio>
+    <audio style="display: none;" volume="0.9" id="discord-leave" src="sounds/discord-leave.mp3"></audio>
+    <audio style="display: none;" volume="0.1" id="nein" src="sounds/nein.mp3"></audio>
+    <audio style="display: none;" volume="0.2" id="troete" src="sounds/troete.mp3"></audio>
+
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+</head>
+
+<body>
+    <br>
+    <div id="loading" style="display: block;">
+        <br><br><br>
+        <center>
+            <h1>Connecting to the Chat...</h1>
+        </center>
+        <br><br><br>
+    </div>
+    <div id="container" style="display: none;">
+        <aside>
+            <header>
+                <input type="text" placeholder="search">
+            </header>
+            <ul id="user-holder" class="dark-scroll"> </ul>
+        </aside>
+        <main>
+            <header>
+                <img height="55px" width="55px"
+                    src="https://i.pinimg.com/736x/a1/8f/b6/a18fb60883262f3ca5a20883a38ed5c2--funny-animals-funny-cats.jpg"
+                    alt="">
+                <div class="chat-data">
+                    <h2 id="chat-name">...</h2>
+                    <h3 id="chat-status">Loading...</h3>
+                </div>
+                <a class="a-button" href="/logout">Logout</a>
+            </header>
+            <ul id="chat-holder" class="chat dark-scroll"> </ul>
+            <footer>
+                <textarea placeholder="Type your message" id="chat-input" class="textfield"></textarea>
+                <input type="button" id="chat-submit" class="submitbutton" value="Send"></input>
+            </footer>
+        </main>
+    </div>
+
+    <script src="main.js" defer></script>
+</body>
+
+</html>

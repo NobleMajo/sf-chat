@@ -1,0 +1,63 @@
+{
+  "name": "statefull-example",
+  "description": "A statefull example implementation.",
+  "version": "0.0.1",
+  "main": "dist/index.js",
+  "author": "majo418",
+  "license": "MIT",
+  "private": false,
+  "keywords": [
+    "typescript",
+    "node",
+    "example",
+    "stateful",
+    "server",
+    "websocket"
+  ],
+  "bin": {
+    "statefull-ne": "./bin/prod.sh",
+    "statefull-ne-dev": "./bin/dev.sh"
+  },
+  "repository": {
+    "url": "git@github.com:majo418/statefull-example.git",
+    "type": "git"
+  },
+  "scripts": {
+    "tsc": "tsc -p tsconfig.json",
+    "start": "ts-node src/index.ts -v -t -p 30007 --external-url wss://coreunit.net:30006 --api-url https://coreunit.net:30004",
+    "exec": "node dist/index.js -v -t -p 30007 --external-url wss://coreunit.net:30006 --api-url https://coreunit.net:30004",
+    "proxy": "cprox -v -t --cert-path $(pwd)/../certs --sslea admin@coreunit.net --sslcn coreunit.net -b 0.0.0.0 -s 30006 *=PROXY:ws://127.0.0.1:30007",
+    "test": "mocha --parallel --require ts-node/register src/test/**/*.test.ts",
+    "build": "npm run tsc",
+    "start:watch": "nodemon --delay 1 -w ./src -x \"npm run start\" --ext *.ts",
+    "build:watch": "nodemon --delay 1 -w ./src -x \"npm run build\" --ext *.ts",
+    "test:watch": "nodemon --delay 1 -w ./src -x \"npm run test\" --ext *.ts",
+    "exec:watch": "nodemon --delay 1 -w ./dist -x \"npm run exec\"",
+    "dev": "nodemon --delay 1 -w ./src -w ../../node/src -x \"npm i ../../node; npm run build; npm run start\" --ext *.ts",
+    "dev2": "nodemon --delay 1 -w ./src -w ../../node/src -x \"npm i ../../node; npm run build; npm run start2\" --ext *.ts",
+    "start2": "ts-node src/index.ts -v -t -p 30009 --external-url wss://coreunit.net:30008 --api-url https://coreunit.net:30004",
+    "proxy2": "cprox -v -t --cert-path $(pwd)/../certs --sslea admin@coreunit.net --sslcn coreunit.net -b 0.0.0.0 -s 30008 *=PROXY:ws://127.0.0.1:30009"
+  },
+  "devDependencies": {
+    "@types/chai": "4",
+    "@types/express": "4",
+    "@types/mocha": "9",
+    "@types/node": "16",
+    "@types/node-fetch": "2",
+    "@types/reflect-metadata": "0",
+    "chai": "4",
+    "cprox": "1",
+    "mocha": "9",
+    "node-fetch": "2",
+    "nodemon": "2",
+    "ts-node": "10",
+    "typescript": "4"
+  },
+  "dependencies": {
+    "cmdy": "1",
+    "express": "4",
+    "express-openid-connect": "2",
+    "statefull": "0",
+    "typenvy": "1"
+  }
+}

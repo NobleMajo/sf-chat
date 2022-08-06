@@ -1,0 +1,63 @@
+{
+  "name": "statefull-api-example",
+  "description": "A statefull-api example implementation.",
+  "version": "0.0.1",
+  "main": "dist/index.js",
+  "author": "majo418",
+  "license": "MIT",
+  "private": false,
+  "keywords": [
+    "typescript",
+    "node",
+    "example",
+    "stateful",
+    "server",
+    "websocket"
+  ],
+  "bin": {
+    "statefull-ae": "./bin/prod.sh",
+    "statefull-ae-dev": "./bin/dev.sh"
+  },
+  "repository": {
+    "url": "git@github.com:majo418/statefull-api-example.git",
+    "type": "git"
+  },
+  "scripts": {
+    "tsc": "tsc -p tsconfig.json",
+    "start": "ts-node src/index.ts -p 30005 -t -v -b 0.0.0.0 -u https://coreunit.net:30004",
+    "proxy": "cprox -v -t --cert-path $(pwd)/../certs --sslea admin@coreunit.net --sslcn coreunit.net -s 30004 -b 0.0.0.0 *=PROXY:http://127.0.0.1:30005",
+    "exec": "node dist/index.js -p 30005 -t -v -b 0.0.0.0",
+    "test": "mocha --parallel --require ts-node/register src/test/**/*.test.ts",
+    "build": "npm run tsc",
+    "start:watch": "nodemon --delay 1 -w ./src -x \"npm run start\" --ext *.ts",
+    "build:watch": "nodemon --delay 1 -w ./src -x \"npm run build\" --ext *.ts",
+    "test:watch": "nodemon --delay 1 -w ./src -x \"npm run test\" --ext *.ts",
+    "exec:watch": "nodemon --delay 1 -w ./dist -x \"npm run exec\"",
+    "dev": "nodemon --delay 1 -w ./src -w ../../api/src -x \"npm i ../../api; npm run start\" --ext *.ts"
+  },
+  "devDependencies": {
+    "@types/chai": "4",
+    "@types/express": "4",
+    "@types/express-oauth-server": "2",
+    "@types/mocha": "9",
+    "@types/node": "16",
+    "@types/node-fetch": "2",
+    "chai": "4",
+    "cprox": "1",
+    "mocha": "9",
+    "node-fetch": "2",
+    "nodemon": "2",
+    "ts-node": "10",
+    "typescript": "4"
+  },
+  "dependencies": {
+    "cmdy": "1",
+    "discord-auth.js": "1",
+    "express": "4",
+    "express-oauth-server": "2",
+    "express-oauth2-middleware": "1",
+    "express-openid-connect": "2",
+    "statefull-api": "0",
+    "typenvy": "1"
+  }
+}
